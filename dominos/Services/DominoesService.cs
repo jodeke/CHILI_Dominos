@@ -1,8 +1,9 @@
 ﻿using dominos.Domain;
+using dominos.Services.Interfaces;
 
 namespace dominos.Services
 {
-    public class DominoesServices : IDominoesServices
+    public class DominoesService : IDominoesService
     {
         public bool CanAChainBeMade(IList<Tile> chosenTiles)
         {
@@ -137,13 +138,4 @@ namespace dominos.Services
             }
         }
     }
-    public interface IDominoesServices
-        {
-            bool CanAChainBeMade(IList<Tile> chosenTiles);
-            IList<Tile> TryCreateCircularChain(IList<Tile> chosenTiles);
-            IList<Tile> PickRandomTiles(IList<Tile> tiles);
-            void GenerateTiles(IList<Tile> tiles);
-            void DisplayChain(IList<Tile> result);
-        }
-    
 }

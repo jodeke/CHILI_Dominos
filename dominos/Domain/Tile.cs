@@ -9,8 +9,8 @@
 
         public Tile(int firstNumber, int secondNumber)
         {
-            FirstNumber = firstNumber;
-            SecondNumber = secondNumber;
+            SetFirstNumber(firstNumber);
+            SetSecondNumber(secondNumber);
         }
 
         public Tile SetFirstNumber(int firstNumber)
@@ -30,9 +30,9 @@
     {
         public static Tile FlipTile(this Tile tile)
         {
-            var temp = tile.FirstNumber;
+            var firstNumber = tile.FirstNumber;
             tile.SetFirstNumber(tile.SecondNumber)
-                .SetSecondNumber(tile.FirstNumber);
+                .SetSecondNumber(firstNumber);
             return tile;
         }
     }

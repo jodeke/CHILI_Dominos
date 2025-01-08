@@ -7,12 +7,12 @@ namespace dominos.Tests
     [TestFixture]
     public class DominoTests
     {
-        private DominoesServices dominoesServices;
+        private DominoesService dominoesServices;
 
         [SetUp]
         public void Init()
         {
-            dominoesServices = new DominoesServices();
+            dominoesServices = new DominoesService();
         }
         [Test]
         public void CanAChainBeMade_WithValidTiles_ReturnsTrue()

@@ -1,5 +1,6 @@
 ﻿using dominos.Domain;
 using dominos.Services;
+using dominos.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace dominos
@@ -10,10 +11,10 @@ namespace dominos
         {
             //setup our DI
             var serviceProvider = new ServiceCollection()
-                .AddSingleton<IDominoesServices, DominoesServices>()
+                .AddSingleton<IDominoesService, DominoesService>()
                 .BuildServiceProvider();
 
-            var service = serviceProvider.GetService<IDominoesServices>();
+            var service = serviceProvider.GetService<IDominoesService>();
 
             IList<Tile> tiles = [];
             service.GenerateTiles(tiles);

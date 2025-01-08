@@ -1,7 +1,6 @@
 ﻿using dominos.Domain;
 using dominos.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace dominos
 {
@@ -16,9 +15,9 @@ namespace dominos
 
             var service = serviceProvider.GetService<IDominoesServices>();
 
-            IList<Tile> Tiles = [];
-            service.GenerateTiles(Tiles);
-            var chosenTiles = service.PickRandomTiles(Tiles);
+            IList<Tile> tiles = [];
+            service.GenerateTiles(tiles);
+            var chosenTiles = service.PickRandomTiles(tiles);
             Console.WriteLine($"Chosen Tiles({chosenTiles.Count}):");
             foreach (var tile in chosenTiles)
             {

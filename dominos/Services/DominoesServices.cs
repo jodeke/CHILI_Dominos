@@ -1,9 +1,4 @@
 ﻿using dominos.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dominos.Services
 {
@@ -24,7 +19,7 @@ namespace dominos.Services
 
                 return false;
             }
-
+            //check if the number of tiles with the same number is even
             var numberCount = new Dictionary<int, int>();
             foreach (var tile in chosenTiles)
             {
@@ -33,7 +28,7 @@ namespace dominos.Services
                 if (!numberCount.TryAdd(tile.SecondNumber, 1))
                     numberCount[tile.SecondNumber]++;
             }
-
+            
             foreach (var count in numberCount)
             {
                 if (count.Value % 2 != 0)
@@ -73,6 +68,8 @@ namespace dominos.Services
             while (tileAdded)
             {
                 tileAdded = false;
+
+                //find the next tile that can be connected to the front or back of the chain
                 var firstTileOfChain = chain.First();
                 var lastTileOfChain = chain.Last();
                 var nextTile = chainingTiles.FirstOrDefault(tile => lastTileOfChain.SecondNumber == tile.FirstNumber || lastTileOfChain.SecondNumber == tile.SecondNumber);
@@ -93,7 +90,7 @@ namespace dominos.Services
                 }
             }
 
-            //check if last tile can be connected to the first tile
+            //check if last tile can be connected to the first tile to go full circle
             if (chain.Count == chosenTiles.Count && chain.First().FirstNumber == chain.Last().SecondNumber || chain.First().FirstNumber == chain.Last().FirstNumber)
             {
                 Console.WriteLine("A circular chain was created");
@@ -112,7 +109,7 @@ namespace dominos.Services
         {
             var chosenTiles = new List<Tile>();
             int rInt = Random.Shared.Next(tiles.Count);
-            //pick rInt number of tiles
+
             for (int i = 0; i < rInt; i++)
             {
                 chosenTiles.Add(tiles[Random.Shared.Next(tiles.Count)]);

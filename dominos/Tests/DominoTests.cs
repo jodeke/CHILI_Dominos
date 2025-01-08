@@ -1,18 +1,13 @@
 ﻿using dominos.Domain;
 using dominos.Services;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dominos.Tests
 {
     [TestFixture]
     public class DominoTests
     {
-        private IDominoesServices dominoesServices;
+        private DominoesServices dominoesServices;
 
         [SetUp]
         public void Init()
